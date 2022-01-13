@@ -1,0 +1,9 @@
+apiVersion: v2
+name: helm-multilvl-v2
+description: A subchart in the helm-multilvl-example
+
+type: application
+
+version: 0.0.1
+
+appVersion: 0.0.1

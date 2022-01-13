@@ -1,0 +1,13 @@
+helm-multilvl-ingress:
+  v1:
+    enabled: true
+  v2:
+    enabled: true
+helm-multilvl-v1:
+  enabled: true
+  configMap:
+    randomData: zyxw
+helm-multilvl-v2:
+  enabled: true
+  configMap:
+    randomData: vuts

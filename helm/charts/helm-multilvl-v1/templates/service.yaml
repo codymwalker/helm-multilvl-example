@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "helm-multilvl-v1-chart.name" . }}
+  labels:
+    app: {{ template "helm-multilvl-v1-chart.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      protocol: TCP
+      name: {{ .Values.service.name }}
+  selector:
+    app: {{ template "helm-multilvl-v1-chart.name" . }}
+    release: {{ .Release.Name }}

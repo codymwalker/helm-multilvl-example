@@ -1,0 +1,8 @@
+v1:
+  enabled: true
+  service: helm-multilvl-v1
+  port: 80
+v2:
+  enabled: true
+  service: helm-multilvl-v2
+  port: 80

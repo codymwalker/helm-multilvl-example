@@ -1,0 +1,16 @@
+apiVersion: v2
+name: helm-multilvl-example
+description: A multilvl helm chart example
+
+type: application
+
+version: 0.0.1
+
+appVersion: 0.0.1
+
+dependencies:
+  - name: helm-multilvl-ingress
+  - name: helm-multilvl-v1
+    condition: helm-multilvl-v1.enabled
+  - name: helm-multilvl-v2
+    condition: helm-multilvl-v2.enabled

@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ template "helm-multilvl-ingress-chart.fullname" . }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      {{- if .Values.v1.enabled }}
+      - path: /v1
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.v1.service }}
+            port: 
+              number: 80
+      {{- end }}
+      {{- if .Values.v2.enabled }}
+      - path: /v2
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.v2.service }}
+            port: 
+              number: 80
+      {{- end}}
